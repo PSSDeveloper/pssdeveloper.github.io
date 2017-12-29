@@ -62,7 +62,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="runtime," />
 
 
 
@@ -73,16 +73,25 @@
 
 
 
-<meta name="description" content="勤能补拙是良训，一分辛苦一分才。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GavinPeng&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="备注:该文章是由简书迁移而来什么是runtime?runtime是一套底层的C语言API，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。 runtime有什么作用？1.能动态产生一个类，一个成员变量，一个方法2.能动态修改一个类，一个成员变量，一个方法3.能动态删除一个类，一个成员变量，一个方法 常用的头文件12#import &amp;lt;ob">
+<meta name="keywords" content="runtime">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中的runtime应用">
+<meta property="og:url" content="http://yoursite.com/2017/12/29/iOS中的runtime应用/index.html">
 <meta property="og:site_name" content="GavinPeng&#39;s Blog">
-<meta property="og:description" content="勤能补拙是良训，一分辛苦一分才。">
+<meta property="og:description" content="备注:该文章是由简书迁移而来什么是runtime?runtime是一套底层的C语言API，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。 runtime有什么作用？1.能动态产生一个类，一个成员变量，一个方法2.能动态修改一个类，一个成员变量，一个方法3.能动态删除一个类，一个成员变量，一个方法 常用的头文件12#import &amp;lt;ob">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-4450c38cd70ae7a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-faf2b53408ba2f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-a86cea17ea24e228.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-17b06d69a5629611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-6900c017576460ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1183463-4c78733621e3e934.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-29T07:25:53.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GavinPeng&#39;s Blog">
-<meta name="twitter:description" content="勤能补拙是良训，一分辛苦一分才。">
+<meta name="twitter:title" content="iOS中的runtime应用">
+<meta name="twitter:description" content="备注:该文章是由简书迁移而来什么是runtime?runtime是一套底层的C语言API，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。 runtime有什么作用？1.能动态产生一个类，一个成员变量，一个方法2.能动态修改一个类，一个成员变量，一个方法3.能动态删除一个类，一个成员变量，一个方法 常用的头文件12#import &amp;lt;ob">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1183463-4450c38cd70ae7a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -112,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/29/iOS中的runtime应用/"/>
 
 
 
 
 
-  <title>GavinPeng's Blog</title>
+  <title>iOS中的runtime应用 | GavinPeng's Blog</title>
   
 
 
@@ -137,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,9 +229,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -253,9 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/29/iOS中的runtime应用/" itemprop="url">iOS中的runtime应用</a></h1>
+          <h1 class="post-title" itemprop="name headline">iOS中的runtime应用</h1>
         
 
         <div class="post-meta">
@@ -316,9 +322,7 @@
       
 
       
-        
-          
-            <h2 id="备注-该文章是由简书迁移而来"><a href="#备注-该文章是由简书迁移而来" class="headerlink" title="备注:该文章是由简书迁移而来"></a>备注:该文章是由简书迁移而来</h2><h4 id="什么是runtime"><a href="#什么是runtime" class="headerlink" title="什么是runtime?"></a>什么是runtime?</h4><p>runtime是一套底层的<strong>C语言API</strong>，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。</p>
+        <h2 id="备注-该文章是由简书迁移而来"><a href="#备注-该文章是由简书迁移而来" class="headerlink" title="备注:该文章是由简书迁移而来"></a>备注:该文章是由简书迁移而来</h2><h4 id="什么是runtime"><a href="#什么是runtime" class="headerlink" title="什么是runtime?"></a>什么是runtime?</h4><p>runtime是一套底层的<strong>C语言API</strong>，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。</p>
 <h4 id="runtime有什么作用？"><a href="#runtime有什么作用？" class="headerlink" title="runtime有什么作用？"></a>runtime有什么作用？</h4><p>1.能动态产生一个类，一个成员变量，一个方法<br>2.能动态修改一个类，一个成员变量，一个方法<br>3.能动态删除一个类，一个成员变量，一个方法</p>
 <h4 id="常用的头文件"><a href="#常用的头文件" class="headerlink" title="常用的头文件"></a>常用的头文件</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span>  //包含对类、成员变量、属性、方法的操作</span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/message.h&gt;</span>  //包含消息机制</span></span><br></pre></td></tr></table></figure>
 <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_copyIvarList（）返回一个指向类的成员变量数组的指针</span><br><span class="line">class_copyPropertyList（）返回一个指向类的属性数组的指针</span><br></pre></td></tr></table></figure>
@@ -343,8 +347,6 @@
 </ul>
 <p>代码实现如下：<br><img src="http://upload-images.jianshu.io/upload_images/1183463-17b06d69a5629611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行程序崩溃.png"><img src="http://upload-images.jianshu.io/upload_images/1183463-6900c017576460ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加一个分类实现方法交换.png"><br>再次运行刚才的程序：<br><img src="http://upload-images.jianshu.io/upload_images/1183463-4c78733621e3e934.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最终运行结果图.png"></p>
 
-          
-        
       
     </div>
     
@@ -359,202 +361,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/iOS制作bundle与framework的步骤和流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gavin Peng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/16532119">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GavinPeng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/23/iOS制作bundle与framework的步骤和流程/" itemprop="url">iOS制作bundle与framework的步骤和流程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T14:11:23+08:00">
-                2017-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/runtime/" rel="tag"># runtime</a>
           
-            
-          
-
-          
-          
-             <span id="/2017/12/23/iOS制作bundle与framework的步骤和流程/" class="leancloud_visitors" data-flag-title="iOS制作bundle与framework的步骤和流程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>由于需要把代码和资源封装起来给第三方使用，也就是制作SDK，所以会进行下面的打包操作。</p>
-<h2 id="制作Bundle包"><a href="#制作Bundle包" class="headerlink" title="制作Bundle包"></a>制作Bundle包</h2><p>Bundle里一般放置着各种资源文件，比如图片，storyboard，xib，音视频文件等。<br>具体制作步骤如下所示：</p>
-<ul>
-<li>选择XCode创建一个MacOS新项目，选择在Framework &amp; Library中选择Bundle类型。如下图所示：</li>
-</ul>
-<p><img src="http://ou1ptmbjj.bkt.clouddn.com/BundleBegin.jpeg" alt="第一步"></p>
-<ul>
-<li><p>因为选择的是macOS平台下的Bundle包，所以需要进行一些设置，在<strong>Build Phases -&gt; Architectures -&gt; Base SDK</strong>选择为iOS SDKs<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_1.png" alt="设置平台信息"></p>
-</li>
-<li><p><strong>可选设置</strong>设置完平台版本之后，在<strong>Build Phases -&gt; COMBINE_HIDPI_IMAGES</strong>设置为NO，经测试在高版本的XCode中，设置为YES也不会导致，打包出的framework中的png图片格式变为tiff。<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_4.png" alt="可选设置一"></p>
-</li>
-<li><p><strong>可选项</strong>作为资源包，仅仅需要编译就好，无需安装相关的配置信息，发现在高版本的XCode上，系统会默认设置<strong>skip install</strong>为YES，因此该步骤可做可不做，<strong>将skip install设置为YES,并删除Installation Directory下的目录</strong>.<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_2.png" alt="可选设置二"></p>
-</li>
-<li><p>设置完成之后，即可进行编译<strong>(Commond B)</strong>打出Bundle包了。然后，show in finder即可找到对应的资源包。</p>
-</li>
-</ul>
-<p><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_3.png" alt="最后步骤"></p>
-<p><strong>注意打包的过程中设备要选择Generic iOS Devices，即可打出能在真机上跑的资源包</strong></p>
-<p>-</p>
-<h2 id="制作framework静态库"><a href="#制作framework静态库" class="headerlink" title="制作framework静态库"></a>制作framework静态库</h2><p>静态库的制作也很简单，步骤如下：</p>
-<ul>
-<li>打开XCode，选择iOS平台，Framework &amp; Library下的Cocoa Touch Framework创建出一个新的Project<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_6.png" alt="创建project"></li>
-<li>现在开始进行一些项目设置，在<strong>Build Settings</strong>中进行设置。<ul>
-<li>有以下几个设置项 <ol>
-<li>在Linking里，将Dead Code Stripping设置为<strong>NO</strong></li>
-<li>Link With Standard Libraries设置为<strong>NO</strong></li>
-<li>将Mach-O Type改为<strong>Static Librariy</strong></li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_7.png" alt="修改一些设置"><br>设置完毕之后的Linking里的选项如下图，修改之后的单项为深黑色:<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_8.png" alt="设置完成之后的图"></p>
-<ul>
-<li>然后依旧是在Build Setting下的Architectures下增加<strong>armv7s</strong>架构<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_9.png" alt=""></li>
-<li><p>然后设置<strong>Build Ative Architectures Only为NO</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_10.png" alt=""></p>
-</li>
-<li><p>然后将要打包成Framework的代码文件拖拽到工程目录下，并在与<strong>项目名称相同的.h文件</strong>下把要<strong>暴露出去的头文件按照指定格式（引用framework里文件的格式）</strong>填写。<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_13.png" alt=""></p>
-</li>
-<li>然后回到<strong>Build Phases -&gt; Headers</strong>将要暴露出去的头文件由<strong>project或者private拖拽到public中去。</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_14.png" alt=""></li>
-<li>然后就可以进行编译工作了，分别选择真机和模拟器进行编译，会编译出对应模式下的framework，会有<strong>Debug和Release的真机和模拟器之分。</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170803_21.png" alt=""></li>
-<li>然后需要将打包出的多个framework给合并成一个framework。如图所示，选中<strong>TARGETS -&gt; Editor -&gt; Add Target</strong>添加一个新的target到本target。<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_15.png" alt=""></li>
-<li>然后选择<strong>Cross-platform</strong>跨平台这个target，选中<strong>Aggregate</strong>模版，然后按照提示创建出target。<br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_16.png" alt=""></li>
-<li>然后选中刚才创建的那个target，点击左上角的+号按钮，选择添加一个脚本文件，并将以下脚本代码添加进去。</li>
-</ul>
-<p><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_17.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Sets the target folders and the final framework product.</span><br><span class="line"># 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME</span><br><span class="line"># 例如: FMK_NAME = &quot;MyFramework&quot;</span><br><span class="line">FMK_NAME=$&#123;PROJECT_NAME&#125;</span><br><span class="line"># Install dir will be the final output to the framework.</span><br><span class="line"># The following line create it in the root folder of the current project.</span><br><span class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># Working dir will be deleted after theframework creation.</span><br><span class="line">WRK_DIR=build</span><br><span class="line">DEVICE_DIR=$&#123;WRK_DIR&#125;/Release-iphoneos/$&#123;FMK_NAME&#125;.framework</span><br><span class="line">SIMULATOR_DIR=$&#123;WRK_DIR&#125;/Release-iphonesimulator/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># -configuration $&#123;CONFIGURATION&#125;</span><br><span class="line"># Clean and Building both architectures.</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphoneos clean build</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphonesimulator clean build</span><br><span class="line"># Cleaning the oldest.</span><br><span class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</span><br><span class="line">then</span><br><span class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">fi</span><br><span class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</span><br><span class="line"># Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.</span><br><span class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;FMK_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;FMK_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;FMK_NAME&#125;&quot;</span><br><span class="line">rm -r &quot;$&#123;WRK_DIR&#125;&quot;</span><br><span class="line">open &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>经过以上步骤，我们就可以制作出一个可以使用的framework了。<strong>需要注意的是，如果该framework包含有资源文件，需要在用到该framework的项目中，将该framewoirk加入到Copy Bundle Resources 中去，否则在使用过程中如果用到对应的资源会报错。</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_19.png" alt=""></li>
-</ul>
-<p>参考资料：</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/038dab7accbc" target="_blank" rel="noopener">xcode7制作framework,结合xib,storyboard,资源文件等</a></li>
-<li><a href="http://www.jianshu.com/p/f2ffe8325519" target="_blank" rel="noopener">iOS从静态库加载Storyboard并创建ViewController教程</a></li>
-<li><a href="http://www.jianshu.com/p/55038871e7de" target="_blank" rel="noopener">iOS - Bundle 资源文件包</a></li>
-<li><a href="http://www.jianshu.com/p/58c3a27b2649" target="_blank" rel="noopener">Xcode小技巧】生成Bundle包</a></li>
-<li><a href="http://www.jianshu.com/p/87dbf57cfe4a" target="_blank" rel="noopener">iOS封装功能生成 .framework</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/23/iOS制作bundle与framework的步骤和流程/" rel="next" title="iOS制作bundle与framework的步骤和流程">
+                <i class="fa fa-chevron-left"></i> iOS制作bundle与framework的步骤和流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -564,10 +400,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -575,6 +412,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -595,8 +436,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -653,6 +503,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#备注-该文章是由简书迁移而来"><span class="nav-number">1.</span> <span class="nav-text">备注:该文章是由简书迁移而来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是runtime"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是runtime?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runtime有什么作用？"><span class="nav-number">1.0.2.</span> <span class="nav-text">runtime有什么作用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的头文件"><span class="nav-number">1.0.3.</span> <span class="nav-text">常用的头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">1.0.4.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runtime在开发中的用途"><span class="nav-number">1.0.5.</span> <span class="nav-text">runtime在开发中的用途</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -793,6 +659,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
