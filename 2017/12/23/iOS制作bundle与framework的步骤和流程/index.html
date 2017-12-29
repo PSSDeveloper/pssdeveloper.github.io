@@ -379,33 +379,8 @@
 <li>然后选中刚才创建的那个target，点击左上角的+号按钮，选择添加一个脚本文件，并将以下脚本代码添加进去。</li>
 </ul>
 <p><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_17.png" alt=""></p>
-<pre><code># Sets the target folders and the final framework product.
-# 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME
-# 例如: FMK_NAME = &quot;MyFramework&quot;
-FMK_NAME=${PROJECT_NAME}
-# Install dir will be the final output to the framework.
-# The following line create it in the root folder of the current project.
-INSTALL_DIR=${SRCROOT}/Products/${FMK_NAME}.framework
-# Working dir will be deleted after theframework creation.
-WRK_DIR=build
-DEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework
-SIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework
-# -configuration ${CONFIGURATION}
-# Clean and Building both architectures.
-xcodebuild -configuration &quot;Release&quot; -target &quot;${FMK_NAME}&quot; -sdk iphoneos clean build
-xcodebuild -configuration &quot;Release&quot; -target &quot;${FMK_NAME}&quot; -sdk iphonesimulator clean build
-# Cleaning the oldest.
-if [ -d &quot;${INSTALL_DIR}&quot; ]
-then
-rm -rf &quot;${INSTALL_DIR}&quot;
-fi
-mkdir -p &quot;${INSTALL_DIR}&quot;
-cp -R &quot;${DEVICE_DIR}/&quot; &quot;${INSTALL_DIR}/&quot;
-# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.
-lipo -create &quot;${DEVICE_DIR}/${FMK_NAME}&quot; &quot;${SIMULATOR_DIR}/${FMK_NAME}&quot; -output &quot;${INSTALL_DIR}/${FMK_NAME}&quot;
-rm -r &quot;${WRK_DIR}&quot;
-open &quot;${INSTALL_DIR}&quot;
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Sets the target folders and the final framework product.</span><br><span class="line"># 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME</span><br><span class="line"># 例如: FMK_NAME = &quot;MyFramework&quot;</span><br><span class="line">FMK_NAME=$&#123;PROJECT_NAME&#125;</span><br><span class="line"># Install dir will be the final output to the framework.</span><br><span class="line"># The following line create it in the root folder of the current project.</span><br><span class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># Working dir will be deleted after theframework creation.</span><br><span class="line">WRK_DIR=build</span><br><span class="line">DEVICE_DIR=$&#123;WRK_DIR&#125;/Release-iphoneos/$&#123;FMK_NAME&#125;.framework</span><br><span class="line">SIMULATOR_DIR=$&#123;WRK_DIR&#125;/Release-iphonesimulator/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># -configuration $&#123;CONFIGURATION&#125;</span><br><span class="line"># Clean and Building both architectures.</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphoneos clean build</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphonesimulator clean build</span><br><span class="line"># Cleaning the oldest.</span><br><span class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</span><br><span class="line">then</span><br><span class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">fi</span><br><span class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</span><br><span class="line"># Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.</span><br><span class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;FMK_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;FMK_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;FMK_NAME&#125;&quot;</span><br><span class="line">rm -r &quot;$&#123;WRK_DIR&#125;&quot;</span><br><span class="line">open &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>经过以上步骤，我们就可以制作出一个可以使用的framework了。<strong>需要注意的是，如果该framework包含有资源文件，需要在用到该framework的项目中，将该framewoirk加入到Copy Bundle Resources 中去，否则在使用过程中如果用到对应的资源会报错。</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_19.png" alt=""></li>
 </ul>
 <p>参考资料：</p>
@@ -532,7 +507,7 @@ open &quot;${INSTALL_DIR}&quot;
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
