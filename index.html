@@ -236,157 +236,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/29/iOS中的runtime应用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gavin Peng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/16532119">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GavinPeng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/29/iOS中的runtime应用/" itemprop="url">iOS中的runtime应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T13:38:40+08:00">
-                2017-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/29/iOS中的runtime应用/" class="leancloud_visitors" data-flag-title="iOS中的runtime应用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="备注-该文章是由简书迁移而来"><a href="#备注-该文章是由简书迁移而来" class="headerlink" title="###备注:该文章是由简书迁移而来"></a>###备注:该文章是由简书迁移而来</h2><h4 id="1-什么是runtime"><a href="#1-什么是runtime" class="headerlink" title="1.什么是runtime?"></a>1.什么是runtime?</h4><p>runtime是一套底层的<strong>C语言API</strong>，包含很多强大实用的C语言数据类型和C语言函数，平时我们编写的OC代码，底层都是基于runtime实现的。</p>
-<h4 id="2-runtime有什么作用？"><a href="#2-runtime有什么作用？" class="headerlink" title="2.runtime有什么作用？"></a>2.runtime有什么作用？</h4><p>1.能动态产生一个类，一个成员变量，一个方法<br>2.能动态修改一个类，一个成员变量，一个方法<br>3.能动态删除一个类，一个成员变量，一个方法</p>
-<h4 id="3-常用的头文件"><a href="#3-常用的头文件" class="headerlink" title="3.常用的头文件"></a>3.常用的头文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;objc/runtime.h&gt; 包含对类、成员变量、属性、方法的操作</span><br><span class="line">#import &lt;objc/message.h&gt; 包含消息机制</span><br></pre></td></tr></table></figure>
-<p>####4.常用方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_copyIvarList（）返回一个指向类的成员变量数组的指针</span><br><span class="line">class_copyPropertyList（）返回一个指向类的属性数组的指针</span><br></pre></td></tr></table></figure>
-<p><strong>注意：根据Apple官方runtime.h文档所示，上面两个方法返回的指针，在使用完毕之后必须free()。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ivar_getName（）获取成员变量名--&gt;C类型的字符串</span><br><span class="line">property_getName（）获取属性名--&gt;C类型的字符串</span><br><span class="line">-------------------------------------</span><br><span class="line">typedef struct objc_method *Method;</span><br><span class="line">class_getInstanceMethod（） </span><br><span class="line">class_getClassMethod（）以上两个函数传入返回Method类型</span><br><span class="line">---------------------------------------------------</span><br><span class="line">method_exchangeImplementations（）交换两个方法的实现</span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line">####5.runtime在开发中的用途</span><br><span class="line">1.动态的遍历一个类的所有成员变量，用于字典转模型,归档解档操作</span><br><span class="line">   代码如下：</span><br></pre></td></tr></table></figure>
-<ul>
-<li>(void)viewDidLoad {<br>[super viewDidLoad];<br>/<strong> 利用runtime遍历一个类的全部成员变量<br>  1.导入头文件<objc runtime.h=""><br> */<br>unsigned int count = 0;<br>/</objc></strong> Ivar:表示成员变量类型 <em>/<br>Ivar </em>ivars = class_copyIvarList([BDPerson class], &amp;count);//获得一个指向该类成员变量的指针<br>for (int i =0; i &lt; count; i ++) {<br>//获得Ivar      <pre><code>Ivar ivar = ivars[i];        //根据ivar获得其成员变量的名称---&gt;C语言的字符串      
-const char *name = ivar_getName(ivar);       
-NSString *key = [NSString stringWithUTF8String:name];      
-NSLog(@&quot;%d----%@&quot;,i,key);
-</code></pre>  }<br>}</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">运行结果如下：![成员变量遍历输出结果.png](http://upload-images.jianshu.io/upload_images/1183463-4450c38cd70ae7a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">获取一个类的全部属性：</span><br><span class="line">![获取类的属性的代码实现.png](http://upload-images.jianshu.io/upload_images/1183463-faf2b53408ba2f17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">结果如下：![输出结果.png](http://upload-images.jianshu.io/upload_images/1183463-a86cea17ea24e228.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">应用场景：</span><br><span class="line"></span><br><span class="line">* 可以利用遍历类的属性，来快速的进行归档操作。</span><br><span class="line">* 将从网络上下载的json数据进行字典转模型。</span><br><span class="line">      注意：归档解档需要遵守&lt;NSCoding&gt;协议，实现以下两个方法</span><br><span class="line">      </span><br><span class="line">```objc</span><br><span class="line"> - (void)encodeWithCoder:(NSCoder *)encoder&#123;    </span><br><span class="line">      //归档存储自定义对象    </span><br><span class="line">      unsigned int count = 0;  </span><br><span class="line">      //获得指向该类所有属性的指针   </span><br><span class="line">      objc_property_t *properties = class_copyPropertyList([BDPerson class], &amp;count);   </span><br><span class="line">      for (int i =0; i &lt; count; i ++) &#123;        </span><br><span class="line">      //获得        </span><br><span class="line">      objc_property_t property = properties[i];//根据objc_property_t获得其属性的名称---&gt;C语言的字符串       </span><br><span class="line">     const char *name = property_getName(property);   </span><br><span class="line">     NSString *key = [NSString   stringWithUTF8String:name];       </span><br><span class="line">     //编码每个属性,利用kVC取出每个属性对应的数值            </span><br><span class="line">     [encoder encodeObject:[self valueForKeyPath:key] forKey:key]; </span><br><span class="line">   &#125;&#125;</span><br><span class="line">       </span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)decoder&#123;    </span><br><span class="line">	//归档存储自定义对象    </span><br><span class="line">	  unsigned int count = 0;   </span><br><span class="line">	//获得指向该类所有属性的指针   </span><br><span class="line">	 objc_property_t *properties = class_copyPropertyList([BDPerson class], &amp;count);   </span><br><span class="line">	 for(int i =0; i &lt; count; i ++) &#123;       </span><br><span class="line">	      objc_property_t property = properties[i];//根据objc_property_t获得其属性的名称---&gt;C语言的字符串       </span><br><span class="line">	      const char *name = property_getName(property); </span><br><span class="line">	      NSString *key = [NSString stringWithUTF8String:name];//解码每个属性,利用kVC取出每个属性对应的数值      </span><br><span class="line">	      [self setValue:[decoder decodeObjectForKey:key] forKeyPath:key];  </span><br><span class="line">	  &#125;   </span><br><span class="line">	return self;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>二、交换方法<br>    通过runtime的<strong>method_exchangeImplementations(Method m1, Method m2)</strong>方法，可以进行交换方法的实现；一般用自己写的方法（常用在自己写的框架中，添加某些防错措施）来替换系统的方法实现，常用的地方有：</p>
-<ul>
-<li>在数组中，越界访问程序会崩，可以用自己的方法添加判断防止程序出现崩溃数组或字典中不能添加nil，如果添加程序会崩，用自己的方法替换系统防止系统崩溃</li>
-<li>…</li>
-</ul>
-<p>代码实现如下：<br><img src="http://upload-images.jianshu.io/upload_images/1183463-17b06d69a5629611.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行程序崩溃.png"><img src="http://upload-images.jianshu.io/upload_images/1183463-6900c017576460ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加一个分类实现方法交换.png"><br>再次运行刚才的程序：<br><img src="http://upload-images.jianshu.io/upload_images/1183463-4c78733621e3e934.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最终运行结果图.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/iOS制作bundle与framework的步骤和流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -515,8 +364,33 @@ NSLog(@&quot;%d----%@&quot;,i,key);
 <li>然后选中刚才创建的那个target，点击左上角的+号按钮，选择添加一个脚本文件，并将以下脚本代码添加进去。</li>
 </ul>
 <p><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_17.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Sets the target folders and the final framework product.</span><br><span class="line"># 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME</span><br><span class="line"># 例如: FMK_NAME = &quot;MyFramework&quot;</span><br><span class="line">FMK_NAME=$&#123;PROJECT_NAME&#125;</span><br><span class="line"># Install dir will be the final output to the framework.</span><br><span class="line"># The following line create it in the root folder of the current project.</span><br><span class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># Working dir will be deleted after theframework creation.</span><br><span class="line">WRK_DIR=build</span><br><span class="line">DEVICE_DIR=$&#123;WRK_DIR&#125;/Release-iphoneos/$&#123;FMK_NAME&#125;.framework</span><br><span class="line">SIMULATOR_DIR=$&#123;WRK_DIR&#125;/Release-iphonesimulator/$&#123;FMK_NAME&#125;.framework</span><br><span class="line"># -configuration $&#123;CONFIGURATION&#125;</span><br><span class="line"># Clean and Building both architectures.</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphoneos clean build</span><br><span class="line">xcodebuild -configuration &quot;Release&quot; -target &quot;$&#123;FMK_NAME&#125;&quot; -sdk iphonesimulator clean build</span><br><span class="line"># Cleaning the oldest.</span><br><span class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</span><br><span class="line">then</span><br><span class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">fi</span><br><span class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</span><br><span class="line"># Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.</span><br><span class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;FMK_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;FMK_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;FMK_NAME&#125;&quot;</span><br><span class="line">rm -r &quot;$&#123;WRK_DIR&#125;&quot;</span><br><span class="line">open &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code># Sets the target folders and the final framework product.
+# 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME
+# 例如: FMK_NAME = &quot;MyFramework&quot;
+FMK_NAME=${PROJECT_NAME}
+# Install dir will be the final output to the framework.
+# The following line create it in the root folder of the current project.
+INSTALL_DIR=${SRCROOT}/Products/${FMK_NAME}.framework
+# Working dir will be deleted after theframework creation.
+WRK_DIR=build
+DEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework
+SIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework
+# -configuration ${CONFIGURATION}
+# Clean and Building both architectures.
+xcodebuild -configuration &quot;Release&quot; -target &quot;${FMK_NAME}&quot; -sdk iphoneos clean build
+xcodebuild -configuration &quot;Release&quot; -target &quot;${FMK_NAME}&quot; -sdk iphonesimulator clean build
+# Cleaning the oldest.
+if [ -d &quot;${INSTALL_DIR}&quot; ]
+then
+rm -rf &quot;${INSTALL_DIR}&quot;
+fi
+mkdir -p &quot;${INSTALL_DIR}&quot;
+cp -R &quot;${DEVICE_DIR}/&quot; &quot;${INSTALL_DIR}/&quot;
+# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.
+lipo -create &quot;${DEVICE_DIR}/${FMK_NAME}&quot; &quot;${SIMULATOR_DIR}/${FMK_NAME}&quot; -output &quot;${INSTALL_DIR}/${FMK_NAME}&quot;
+rm -r &quot;${WRK_DIR}&quot;
+open &quot;${INSTALL_DIR}&quot;
+</code></pre><ul>
 <li>经过以上步骤，我们就可以制作出一个可以使用的framework了。<strong>需要注意的是，如果该framework包含有资源文件，需要在用到该framework的项目中，将该framewoirk加入到Copy Bundle Resources 中去，否则在使用过程中如果用到对应的资源会报错。</strong><br><img src="http://ou1ptmbjj.bkt.clouddn.com/Snip20170802_19.png" alt=""></li>
 </ul>
 <p>参考资料：</p>
@@ -612,7 +486,7 @@ NSLog(@&quot;%d----%@&quot;,i,key);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
